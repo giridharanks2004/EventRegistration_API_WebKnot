@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.events.eventapi.Model.College;
@@ -35,5 +37,15 @@ public class CollegeController {
     @GetMapping("/all")
     public ResponseEntity<List<College>> getall(){
         return new ResponseEntity<>(collegeService.getColleges(),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteCollege(@RequestParam("collegeid") long id ){
+        try{
+            collegeService.deletecollege(id);
+            return new ResponseEntity<>("deletion done!",HttpStatus.OK);
+        } catch(Exception e){
+            return new ResponseEntity<>("deletion failed",HttpStatus.CONFLICT);
+        }
     }
 }

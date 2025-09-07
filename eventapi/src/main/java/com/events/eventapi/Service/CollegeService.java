@@ -21,5 +21,16 @@ public class CollegeService {
     public List<College> getColleges(){
         return collegeDB.findAll();
     }
+
+    public College getbyID(Long id){
+        return collegeDB.findById(id).orElse(null);
+    }
+
+    public void deletecollege(long id) throws Exception{
+        if(getbyID(id)==null){
+            throw new Exception("not found");
+        }
+        collegeDB.delete(getbyID(id));
+    }
     
 }
