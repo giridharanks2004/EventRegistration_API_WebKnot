@@ -45,10 +45,10 @@ public class EventController {
         return new ResponseEntity<>(eventService.getallEventsbbyid(id),HttpStatus.OK);
     }
     @PutMapping("/admin/update")
-    public ResponseEntity<Event> updateEvent(@RequestParam("EventID") long eid, @RequestBody Event e){
+    public ResponseEntity<?> updateEvent(@RequestParam("EventID") long eid, @RequestBody Event e){
         ResponseEntity<Event> res = new ResponseEntity<>(eventService.update(eid, e),HttpStatus.OK);
         if(res.getBody() == null){
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("not found",HttpStatus.NOT_FOUND);
         }
         return res;
     }

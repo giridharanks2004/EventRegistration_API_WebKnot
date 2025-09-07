@@ -51,11 +51,11 @@ public class CollegeController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<College> updateCollege(@RequestParam("collegeID") Long id , @RequestBody College college){
+    public ResponseEntity<?> updateCollege(@RequestParam("collegeID") Long id , @RequestBody College college){
         ResponseEntity<College> res = new ResponseEntity<>(collegeService.updateCollege(id, college),HttpStatus.OK);
         
         if(res.getBody() == null){
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("not found",HttpStatus.NOT_FOUND);
         }
 
         return res;
