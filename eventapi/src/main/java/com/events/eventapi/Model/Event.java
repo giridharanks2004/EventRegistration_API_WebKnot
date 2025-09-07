@@ -14,7 +14,7 @@ import lombok.Data;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long eventid;
+    public Long eventid;
     @NotBlank(message = "event name should be entered")
     String eventname;
     @NotBlank(message = "event type should be selected")

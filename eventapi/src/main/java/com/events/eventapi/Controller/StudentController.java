@@ -24,7 +24,7 @@ public class StudentController {
     @Autowired 
     StudentService studentService;
     @Autowired
-    CollegeRepository collegeDB;
+    private CollegeRepository collegeDB;
     @PostMapping("/create")
     public ResponseEntity<?> createStudent(@RequestBody Student student){
         College college = collegeDB.findById(student.getCollege().getId()).orElse(null);
