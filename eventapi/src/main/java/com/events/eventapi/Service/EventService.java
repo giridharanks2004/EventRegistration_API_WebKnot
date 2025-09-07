@@ -25,4 +25,24 @@ public class EventService {
     public List<Event> getallEventsbbyid(long id){
         return EventDB.findByCollegeId(id);
     }
+
+    public Event getEventByid(long id){
+        return EventDB.findById(id).orElse(null);
+    }
+    public Event update(long id,Event e){
+        if(getEventByid(id)==null){
+            return null;
+        }
+        e.setEventid(id);
+        return EventDB.save(e);
+    }
+
+    public void deleteEvent(Long id) throws Exception{
+        Event e = getEventByid(id);
+        if(e == null){
+            throw new Exception("no event registered recheck the event id please");
+        }
+        EventDB.delete(e);
+    }
+
 }

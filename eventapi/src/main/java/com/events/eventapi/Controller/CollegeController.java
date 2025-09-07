@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,5 +48,17 @@ public class CollegeController {
         } catch(Exception e){
             return new ResponseEntity<>("deletion failed",HttpStatus.CONFLICT);
         }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<College> updateCollege(@RequestParam("collegeID") Long id , @RequestBody College college){
+        ResponseEntity<College> res = new ResponseEntity<>(collegeService.updateCollege(id, college),HttpStatus.OK);
+        
+        if(res.getBody() == null){
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+
+        return res;
+        
     }
 }

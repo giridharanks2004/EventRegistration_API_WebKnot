@@ -32,5 +32,13 @@ public class CollegeService {
         }
         collegeDB.delete(getbyID(id));
     }
+    public College updateCollege(long id, College c){
+        if(getbyID(id)==null){
+            return null;
+        }
+        c.setId(id);
+        return collegeDB.save(c);
+
+    }
     
 }
