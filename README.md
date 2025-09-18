@@ -2,7 +2,5 @@ My learnings about entitiy relationship mapping was used to the fullest to map S
 excited to build more apis 
 with the given time and the given requirements i have achived a cleaner and working api and done manual teting instead of junit due to time constraint and i would improve the api furthuer by rolebased access and jwt authorisation and authentication and integrate to a front end by JS fetch promises
 
-thank you people from webknot for comming up with this gave me a reason to lock in for a day and push my limts further 
-
 Giridharan KS
 Dayanada Sagar University
